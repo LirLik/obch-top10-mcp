@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Score {
+  id              Int       @id @default(autoincrement())
+  externalId      Int?      @map("external_id")
+  rank            Int
+  playerName      String    @map("player_name") @db.VarChar(64)
+  score           Int
+  linesCleared    Int       @default(0) @map("lines_cleared")
+  level           Int       @default(1)
+  durationSeconds Int       @default(0) @map("duration_seconds")
+  playedAt        DateTime? @map("played_at")
+  source          String    @db.VarChar(255)
+  syncedAt        DateTime  @map("synced_at")
+
+  @@index([rank])
+  @@map("scores")
+}
+
+model SyncEvent {
+  id          BigInt   @id @default(autoincrement())
+  source      String   @db.VarChar(255)
+  scoresCount Int      @map("scores_count")
+  payloadJson Json     @map("payload_json")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@index([createdAt])
+  @@map("sync_events")
+}

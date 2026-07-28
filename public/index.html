@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>obch Top-10</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Syne:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <h1 class="brand">obch <span>Top-10</span></h1>
+      <p class="lead">Лучшие результаты тетриса из obch — сайт, API и MCP на одном сервисе с MariaDB.</p>
+
+      <div class="meta">
+        <div>обновлено: <strong id="updated">—</strong></div>
+        <div>источник: <strong id="source">—</strong></div>
+      </div>
+
+      <div class="actions">
+        <button id="refresh" type="button">Обновить</button>
+        <button class="secondary" type="button" onclick="location.reload()">Перезагрузить страницу</button>
+      </div>
+
+      <section id="board" class="board" aria-live="polite"></section>
+      <div id="state" class="empty" hidden></div>
+    </main>
+    <script src="/assets/app.js" defer></script>
+  </body>
+</html>
