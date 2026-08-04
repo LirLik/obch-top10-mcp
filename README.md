@@ -104,8 +104,9 @@ ChatGPT принимает только публичный `https://…/mcp` (н
 **[plugins/chatgpt/README.md](plugins/chatgpt/README.md)**
 
 ```bash
-sudo python3 plugins/chatgpt/setup_https.py --domain top10.example.com
-sudo python3 plugins/chatgpt/check_chatgpt_ready.py --base https://top10.example.com
+sudo python3 plugins/chatgpt/enable_domain.py ra-mcp-5.skobeltsyn.com
+sudo python3 plugins/chatgpt/enable_domain.py ra-mcp-5.skobeltsyn.com --https
+sudo python3 plugins/chatgpt/check_chatgpt_ready.py --base https://ra-mcp-5.skobeltsyn.com
 ```
 
 ## Структура
