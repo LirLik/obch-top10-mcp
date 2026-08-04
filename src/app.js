@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
 import { createMcpExpressApp } from '@modelcontextprotocol/sdk/server/express.js';
 import { requireAuthIfConfigured } from './auth.js';
+import { corsMiddleware } from './cors.js';
 import { createMcpServer } from './createMcpServer.js';
 import { checkDatabase } from './db.js';
 import { getTop10, replaceTop10 } from './services/topScoresService.js';
@@ -46,6 +47,8 @@ export function createApp() {
     host,
     ...(allowedHosts.length ? { allowedHosts } : {}),
   });
+
+  app.use(corsMiddleware);
 
   app.get('/health', async (_req, res) => {
     try {
